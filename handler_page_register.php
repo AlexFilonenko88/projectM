@@ -21,6 +21,6 @@ $sql = "INSERT INTO projectm (email, password) VALUES (:email, :password)";
 $statement = $pdo->prepare($sql);
 $statement->execute(['email' => $email, 'password' => $password]);
 
-$_SESSION['success'] = "Пользователь добавлен!";
+$_SESSION['success'] = "Регистриция успешна!";
 
-header("Location: /page_register.php");
+header("Location: /page_login.php");

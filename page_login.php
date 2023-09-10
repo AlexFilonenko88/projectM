@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +37,16 @@
             </a>
         </div>
         <div class="card p-4 border-top-left-radius-0 border-top-right-radius-0">
+
+        <? if(isset($_SESSION['success'])) : ?>
             <div class="alert alert-success">
-                Регистрация успешна
+                <? echo $_SESSION['success'] ?>
             </div>
+            <? 
+                unset($_SESSION['success']);
+            ?>
+        <? endif; ?>
+
             <form action="">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>
