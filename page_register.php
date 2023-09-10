@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,18 +54,21 @@
                                 <h2 class="fs-xxl fw-500 mt-4 text-white text-center">
                                     Регистрация
                                     <small class="h3 fw-300 mt-3 mb-5 text-white opacity-60 hidden-sm-down">
-                                        Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.
-                                        <br> 
-                                        По своей сути рыбатекст является альтернативой традиционному lorem ipsum
-                                        
                                     </small>
                                 </h2>
                             </div>
                             <div class="col-xl-6 ml-auto mr-auto">
                                 <div class="card p-4 rounded-plus bg-faded">
+                                    
+                                    <? if(isset($_SESSION['error'])) : ?>
                                     <div class="alert alert-danger text-dark" role="alert">
                                         <strong>Уведомление!</strong> Этот эл. адрес уже занят другим пользователем.
                                     </div>
+                                    <? 
+                                        unset($_SESSION['error']);
+                                    ?>
+                                    <? endif; ?>
+
                                     <form id="js-login" novalidate="" action="handler_page_register.php" method="post">
                                         <div class="form-group">
                                             <label class="form-label" for="emailverify">Email</label>
