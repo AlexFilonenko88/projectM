@@ -17,9 +17,11 @@ if(!empty($res)){
     die();
 };
 
+$password_hashed = password_hash($password, PASSWORD_DEFAULT);
+
 $sql = "INSERT INTO projectm (email, password) VALUES (:email, :password)";
 $statement = $pdo->prepare($sql);
-$statement->execute(['email' => $email, 'password' => $password]);
+$statement->execute(['email' => $email, 'password' => $password_hashed]);
 
 $_SESSION['success'] = "Регистриция успешна!";
 
