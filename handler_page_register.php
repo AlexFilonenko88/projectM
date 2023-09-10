@@ -11,7 +11,7 @@ $statement->execute(['email' => $email]);
 $res = $statement->fetch(PDO:: FETCH_ASSOC);
 
 if(!empty($res)){
-    $_SESSION['error'] = "Пользователь существует";
+    $_SESSION['error'] = "Этот эл. адрес уже занят другим пользователем.";
 
     header("Location: /page_register.php");
     die();

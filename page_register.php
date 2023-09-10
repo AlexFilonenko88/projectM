@@ -62,10 +62,23 @@
                                     
                                     <? if(isset($_SESSION['error'])) : ?>
                                     <div class="alert alert-danger text-dark" role="alert">
-                                        <strong>Уведомление!</strong> Этот эл. адрес уже занят другим пользователем.
+                                        
+                                        <strong>Уведомление!</strong> <? echo $_SESSION['error'] ?>
+                                     
                                     </div>
                                     <? 
                                         unset($_SESSION['error']);
+                                    ?>
+                                    <? endif; ?>
+
+                                    <? if(isset($_SESSION['success'])) : ?>
+                                    <div class="alert alert-success text-dark" role="alert">
+                                        
+                                        <strong>Уведомление!</strong> <? echo $_SESSION['success'] ?>
+                                     
+                                    </div>
+                                    <? 
+                                        unset($_SESSION['success']);
                                     ?>
                                     <? endif; ?>
 
