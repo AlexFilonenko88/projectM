@@ -1,5 +1,7 @@
 <?php
     session_start();
+    
+    require "functions.php";
 ?>
     
 <!DOCTYPE html>
@@ -60,7 +62,7 @@
                             <div class="col-xl-6 ml-auto mr-auto">
                                 <div class="card p-4 rounded-plus bg-faded">
                                     
-                                    <? if(isset($_SESSION['error'])) : ?>
+                                    <!-- <? if(isset($_SESSION['error'])) : ?>
                                     <div class="alert alert-danger text-dark" role="alert">
                                         
                                         <strong>Уведомление!</strong> <? echo $_SESSION['error'] ?>
@@ -69,9 +71,11 @@
                                     <? 
                                         unset($_SESSION['error']);
                                     ?>
-                                    <? endif; ?>
+                                    <? endif; ?> -->
 
-                                    <? if(isset($_SESSION['success'])) : ?>
+                                    <? display_flash_message('error'); ?>
+
+                                    <!-- <? if(isset($_SESSION['success'])) : ?>
                                     <div class="alert alert-success text-dark" role="alert">
                                         
                                         <strong>Уведомление!</strong> <? echo $_SESSION['success'] ?>
@@ -80,7 +84,9 @@
                                     <? 
                                         unset($_SESSION['success']);
                                     ?>
-                                    <? endif; ?>
+                                    <? endif; ?> -->
+
+                                    <? display_flash_message('success'); ?>
 
                                     <form id="js-login" novalidate="" action="handler_page_register.php" method="post">
                                         <div class="form-group">
