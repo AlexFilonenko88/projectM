@@ -47,7 +47,6 @@ session_start();
             ?>
         <? endif; ?>
 
-        <!-- <? display_flash_message('success'); ?> -->
 
             <form action="">
                 <div class="form-group">

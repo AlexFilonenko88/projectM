@@ -1,6 +1,6 @@
 <?php
     session_start();
-    
+
     require "functions.php";
 ?>
     
@@ -44,7 +44,7 @@
                         <span class="text-white opacity-50 ml-auto mr-2 hidden-sm-down">
                             Уже зарегистрированы?
                         </span>
-                        <a href="page_login.html" class="btn-link text-white ml-auto ml-sm-0">
+                        <a href="page_login.php" class="btn-link text-white ml-auto ml-sm-0">
                             Войти
                         </a>
                     </div>
@@ -62,31 +62,9 @@
                             <div class="col-xl-6 ml-auto mr-auto">
                                 <div class="card p-4 rounded-plus bg-faded">
                                     
-                                    <!-- <? if(isset($_SESSION['error'])) : ?>
-                                    <div class="alert alert-danger text-dark" role="alert">
-                                        
-                                        <strong>Уведомление!</strong> <? echo $_SESSION['error'] ?>
-                                     
-                                    </div>
-                                    <? 
-                                        unset($_SESSION['error']);
-                                    ?>
-                                    <? endif; ?> -->
+                                    <?php display_flash_message('danger'); ?>
 
-                                    <? display_flash_message('error'); ?>
-
-                                    <!-- <? if(isset($_SESSION['success'])) : ?>
-                                    <div class="alert alert-success text-dark" role="alert">
-                                        
-                                        <strong>Уведомление!</strong> <? echo $_SESSION['success'] ?>
-                                     
-                                    </div>
-                                    <? 
-                                        unset($_SESSION['success']);
-                                    ?>
-                                    <? endif; ?> -->
-
-                                    <? display_flash_message('success'); ?>
+                                    <?php display_flash_message('success'); ?>
 
                                     <form id="js-login" novalidate="" action="handler_page_register.php" method="post">
                                         <div class="form-group">
