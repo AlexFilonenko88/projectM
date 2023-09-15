@@ -1,4 +1,7 @@
 <?
+
+// файл handler_page_register.php
+
 function get_user_by_email($email){
     $pdo = new PDO ("mysql:host=localhost;dbname=projectm", "root", "");
     $sql = "SELECT * FROM projectm WHERE email=:email";
@@ -33,3 +36,6 @@ function display_flash_message($name){
             unset($_SESSION[$name]);
     }
 };  
+
+// файл handler_page_login.php
+

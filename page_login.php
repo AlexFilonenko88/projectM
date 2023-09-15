@@ -48,7 +48,7 @@ session_start();
         <? endif; ?>
 
 
-            <form action="">
+            <form action="handler_page_login.php" method="post">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>
                     <input type="email" id="username" class="form-control" placeholder="Эл. адрес" value="">
