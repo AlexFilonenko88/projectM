@@ -10,14 +10,6 @@ function get_user_by_email($email){
     return $statement->fetch(PDO:: FETCH_ASSOC);
 };
 
-function get_user_by_password($password, $user){
-    $pdo = new PDO ("mysql:host=localhost;dbname=projectm", "root", "");
-    $sql = "SELECT * FROM projectm WHERE password=:password";
-    $statement = $pdo->prepare($sql);
-    $statement->execute(['password' => $password]);
-    return $res = $statement->fetch(PDO:: FETCH_ASSOC);
-};
-
 function add_user($email, $password){
 
     $password_hashed = password_hash($password, PASSWORD_DEFAULT);

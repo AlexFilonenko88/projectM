@@ -44,18 +44,27 @@ session_start();
             </div>
             <? 
                 unset($_SESSION['success']);
-            ?>
+            ?> <? elseif (isset($_SESSION['error'])) : ?> 
+                <div class="alert alert-danger">
+                <? echo $_SESSION['error'] ?>
+                </div>
+                <? 
+                unset($_SESSION['error']);
+            ?> 
         <? endif; ?>
+        
+
+        
 
 
             <form action="handler_page_login.php" method="post">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>
-                    <input type="email" id="username" class="form-control" placeholder="Эл. адрес" value="">
+                    <input name="email" type="email" id="username" class="form-control" placeholder="Эл. адрес" value="">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="password">Пароль</label>
-                    <input type="password" id="password" class="form-control" placeholder="" >
+                    <input name="password" type="password" id="password" class="form-control" placeholder="" >
                 </div>
                 <button type="submit" class="btn btn-default float-right">Войти</button>
             </form>
