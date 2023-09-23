@@ -1,21 +1,18 @@
 <?
 session_start();
 
+require "functions.php";
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$pdo = new PDO ("mysql:host=localhost;dbname=projectm", "root", "");
-$sql = "SELECT * FROM projectm WHERE email=:email";
-$statement = $pdo->prepare($sql);
-$statement->execute(['email' => $email]);
-$res = $statement->fetch(PDO:: FETCH_ASSOC);
+$user = get_user_by_email($email);
 
-if(!empty($res)){
- 
-    if(password_verify($password, $res['password'])){
+if(!empty($user)){
+    if(password_verify($password, $user['password'])){
         $_SESSION['success'] = "Добро пожаловать!";
     
-        header("Location: /page_profile.php");
+        header("Location: /users.php");
     } else {
         $_SESSION['error'] = 'Не верный пароль!';
 
