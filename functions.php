@@ -35,7 +35,7 @@ function display_flash_message($name){
 
 // файл users.php
 
-function login(){
+function login($email, $password){
     // подключение к бд
     // $_SESSION['user'] = $user;
 }
@@ -48,29 +48,30 @@ function is_logget_in (){
     return false;
 }
 
-function is_not_logget_in (){
+function is_not_logget_in (){ // если не залогенин, функция редирект
     return !is_logget_in();
 }
 
-function redirect_to ($path) {
-    var_dump('redirect to $path');
+function redirect_to ($path) { // откуда путь приходит ?
+    var_dump('redirect to $path'); //??? делали ?
     exit;
 }
 
-function get_users (){
+function get_users (){ // вывести всех пользователей
     // подключение к бд
     $pdo = new PDO("mysql:host=localhost;dbname=projectm_users", "root", "");
     $statement = $pdo->prepare("SELECT * FROM user");
-    return $statement->fetchAll(PDO::FETCH_ASSOC); // !!!! передать
+    return $statement->fetchAll(PDO::FETCH_ASSOC); // !!!! передать?
 }
 
-function get_authenticated_user (){ // возвращает пользователя
-    if(is_logget_in()){
+//get_current_user
+function get_authenticated_user (){ // возвращает пользователя из сессии
+    if(is_logget_in()){             // если залогенин
         return $_SESSION['user'];
     }
 }
 
-function is_admin ($user){
+function is_admin ($user){ //проверка на админа
     if(is_logget_in()){
         if($user['role' === "admin"]){
             return true;
