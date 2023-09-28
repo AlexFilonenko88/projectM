@@ -36,16 +36,17 @@ function display_flash_message($name){
 
 // файл users.php
 
-function login($email, $password){
+function login($email){
     // подключение к бд с юзерами
 
     $pdo = new PDO ("mysql:host=localhost;dbname=projectm", "root", "");
-    $sql = "SELECT * FROM projectm WHERE email=:email password=:password";
+    $sql = "SELECT * FROM projectm WHERE email=:email";
     $statement = $pdo->prepare($sql);
-    $statement->execute(['email' => $email, 'password' => $password]);
+    $statement->execute(['email' => $email]);
     $user = $statement->fetch(PDO:: FETCH_ASSOC);
     
     $_SESSION['user'] = $user;
+    return $user;
 }
 
 function is_logget_in (){
@@ -72,14 +73,14 @@ function get_users (){ // вывести всех пользователей
 }
 
 function get_authenticated_user (){ // возвращает пользователя из сессии
-    var_dump(is_logget_in());
-    die();
     if(is_logget_in()){             // если залогенин
         return $_SESSION['user'];
     }
 }
 
 function is_admin ($user){ //проверка на админа
+    // var_dump($user);
+    // die();
     if(is_logget_in()){
         if($user['role'] === "admin"){
             return true;
@@ -89,7 +90,7 @@ function is_admin ($user){ //проверка на админа
 }
 
 function is_equel ($user, $current_user) { // хозяин или нет 
-    if($user["id"] == $current_user["id"]) {
+    if($user["id_user"] == $current_user["id"]) {
         return true;
     }
 

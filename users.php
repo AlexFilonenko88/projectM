@@ -8,7 +8,9 @@
         // redirect_to('login');
     };
 
-    $users = get_users(); //возвр 0 ?
+    $users = get_users();
+
+    $authenticated_user = get_authenticated_user();
 ?>    
 
 <!DOCTYPE html>
@@ -56,8 +58,8 @@
             </div>
             <div class="row">
                 <div class="col-xl-12">
-                    <? if(is_admin(get_authenticated_user())) : ?>
-                        <a class="btn btn-success" href="create_user.html">Добавить</a>
+                    <? if(is_admin($authenticated_user)) : ?>
+                    <a class="btn btn-success" href="create_user.html">Добавить</a>
                     <? endif;?>
                     
                     <div class="border-faded bg-faded p-3 mb-g d-flex mt-3">
@@ -75,29 +77,27 @@
             </div>
             <div class="row" id="js-contacts">
                 <? foreach($users as $user):?>
-                    <?php echo '<pre>';
-                        var_dump(get_authenticated_user());
-
-                        echo '</pre>'; ?>
                 <div class="col-xl-4">
                     <div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover" data-filter-tags="oliver kopyov">
                         <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
                             <div class="d-flex flex-row align-items-center">
                                 <span class="status status-success mr-3">
                                     <span class="rounded-circle profile-image d-block "
-                                     style="background-image:url('<?= $user["image"];?>'); background-size: cover;"></span>
+                                    style="background-image:url('<?= $user["image"];?>'); background-size: cover;"></span>
                                 </span>
                                 <div class="info-card-text flex-1">
                                     <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
                                         <?= $user["username"];?>
-                                    <? if(is_admin(get_authenticated_user()) ||
-                                    is_equel($user, get_authenticated_user())) :?>
+
+                                    <? if(is_admin($authenticated_user) ||
+                                    is_equel($user, $authenticated_user)) :?>
                                         <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
                                         <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>
                                     </a>
-                                    <? endif;?>
-                                    <? if(is_admin(get_authenticated_user()) ||
-                                    is_equel($user, get_authenticated_user())) :?>
+                                        <? endif;?>
+
+                                        <? if(is_admin($authenticated_user) ||
+                                            is_equel($user, $authenticated_user)) :?>
 
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="edit.html">
@@ -118,7 +118,7 @@
                                                 Удалить
                                             </a>
                                         </div>
-                                    <? endif;?>
+                                    <? endif; ?>
                                     <span class="text-truncate text-truncate-xl">IT Director, Gotbootstrap Inc.</span>
                                 </div>
                                 <button class="js-expand-btn btn btn-sm btn-default d-none" data-toggle="collapse" data-target="#c_1 > .card-body + .card-body" aria-expanded="false">
