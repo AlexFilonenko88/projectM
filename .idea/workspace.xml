@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="869945c1-9da7-4637-ab37-edf202bc8214" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler_page_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/handler_page_login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/users.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +41,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -56,7 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1694449163050</updated>
       <workItem from="1694449167094" duration="60000" />
-      <workItem from="1695930481211" duration="1831000" />
+      <workItem from="1695930481211" duration="2180000" />
     </task>
     <servers />
   </component>
