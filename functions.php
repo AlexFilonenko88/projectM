@@ -43,7 +43,7 @@ function login($email, $password){
     $sql = "SELECT * FROM projectm WHERE email=:email password=:password";
     $statement = $pdo->prepare($sql);
     $statement->execute(['email' => $email, 'password' => $password]);
-    $statement->fetchAll(PDO:: FETCH_ASSOC);
+    $statement->fetch(PDO:: FETCH_ASSOC);
 
       // $_SESSION['user'] = $user; ?????
 }
