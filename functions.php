@@ -1,4 +1,5 @@
 <?
+session_start();
 
 $pdo = require("pdo.php");
 
@@ -36,13 +37,20 @@ function display_flash_message($name){
 // файл users.php
 
 function login($email, $password){
-    // подключение к бд
-    // $_SESSION['user'] = $user;
+    // подключение к бд с юзерами
+
+    $pdo = new PDO ("mysql:host=localhost;dbname=projectm", "root", "");
+    $sql = "SELECT * FROM projectm WHERE email=:email password=:password";
+    $statement = $pdo->prepare($sql);
+    $statement->execute(['email' => $email, 'password' => $password]);
+    $statement->fetchAll(PDO:: FETCH_ASSOC);
+
+      // $_SESSION['user'] = $user; ?????
 }
 
 function is_logget_in (){
     if(isset($_SESSION['user'])) { // существует такой ключ в глобальном массиве
-        return true;
+        return true;                // если существует, значит залогенин
     }
 
     return false;
@@ -53,18 +61,16 @@ function is_not_logget_in (){ // если не залогенин, функци�
 }
 
 function redirect_to ($path) { // откуда путь приходит ?
-    var_dump('redirect to $path'); //??? делали ?
+    header("Location: /page_login.php"); 
     exit;
 }
 
 function get_users (){ // вывести всех пользователей
-    // подключение к бд
     $pdo = new PDO("mysql:host=localhost;dbname=projectm_users", "root", "");
-    $statement = $pdo->prepare("SELECT * FROM user");
-    return $statement->fetchAll(PDO::FETCH_ASSOC); // !!!! передать?
+    $statement = $pdo->prepare("SELECT * FROM user"); //query ???
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-//get_current_user
 function get_authenticated_user (){ // возвращает пользователя из сессии
     if(is_logget_in()){             // если залогенин
         return $_SESSION['user'];
@@ -73,7 +79,7 @@ function get_authenticated_user (){ // возвращает пользовате
 
 function is_admin ($user){ //проверка на админа
     if(is_logget_in()){
-        if($user['role' === "admin"]){
+        if($user['role'] === "admin"){
             return true;
         }
         return false;

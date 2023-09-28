@@ -2,13 +2,14 @@
     session_start();
 
     require "functions.php";
-    // функция login($email, $password)
+    login($email, $password);
 
     if(is_not_logget_in()) {
         // redirect_to('login');
     };
 
-    $users = get_users();
+    $users = get_users(); //возвр 0 ?
+    // var_dump($users);
 
 ?>    
 
