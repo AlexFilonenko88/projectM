@@ -11,6 +11,7 @@ $user = get_user_by_email($email);
 if(!empty($user)){
     if(password_verify($password, $user['password'])){
         $_SESSION['success'] = "Добро пожаловать!";
+        // $_SESSION['user'] = $user;
     
         header("Location: /users.php");
     } else {

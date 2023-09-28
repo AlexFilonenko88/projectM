@@ -2,15 +2,13 @@
     session_start();
 
     require "functions.php";
-    // login($email, $password);
+    // login($email, $password); //окуда беруться данные ?
 
     if(is_not_logget_in()) {
         // redirect_to('login');
     };
 
     $users = get_users(); //возвр 0 ?
-    // var_dump($users);
-
 ?>    
 
 <!DOCTYPE html>
@@ -77,9 +75,12 @@
             </div>
             <div class="row" id="js-contacts">
                 <? foreach($users as $user):?>
+                    <?php echo '<pre>';
+                        var_dump(get_authenticated_user());
 
+                        echo '</pre>'; ?>
                 <div class="col-xl-4">
-                    <div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover" data-filter-tags="<?= $user["username"];?>">
+                    <div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover" data-filter-tags="oliver kopyov">
                         <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
                             <div class="d-flex flex-row align-items-center">
                                 <span class="status status-success mr-3">
@@ -88,7 +89,7 @@
                                 </span>
                                 <div class="info-card-text flex-1">
                                     <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
-                                        Oliver Kopyov
+                                        <?= $user["username"];?>
                                     <? if(is_admin(get_authenticated_user()) ||
                                     is_equel($user, get_authenticated_user())) :?>
                                         <i class="fal fas fa-cog fa-fw d-inline-block ml-1 fs-md"></i>
