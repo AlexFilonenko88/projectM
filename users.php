@@ -5,7 +5,7 @@
 
     $users = get_users();
 
-    $authenticated_user = get_authenticated_user();
+    $authenticated_user = is_logget_in();
 ?>    
 
 <!DOCTYPE html>
@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <? if(is_admin($authenticated_user)) : ?>
-                    <a class="btn btn-success" href="create_user.html">Добавить</a>
+                    <a class="btn btn-success" href="create_user.php">Добавить</a>
                     <? endif;?>
                     
                     <div class="border-faded bg-faded p-3 mb-g d-flex mt-3">

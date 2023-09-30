@@ -37,8 +37,6 @@ function display_flash_message($name){
 // файл users.php
 
 function login($email){
-    // подключение к бд с юзерами
-
     $pdo = new PDO ("mysql:host=localhost;dbname=projectm", "root", "");
     $sql = "SELECT * FROM projectm WHERE email=:email";
     $statement = $pdo->prepare($sql);
@@ -51,7 +49,7 @@ function login($email){
 
 function is_logget_in (){
     if(isset($_SESSION['user'])) { // существует такой ключ в глобальном массиве
-        return true;                // если существует, значит залогенин
+        return $_SESSION['user'];  // если существует, значит залогенин
     }
 
     return false;
@@ -61,10 +59,10 @@ function is_logget_in (){
 //     return !is_logget_in();
 // }
 
-function redirect_to ($path) { // откуда путь приходит ?
-    header("Location: /page_login.php"); 
-    exit;
-}
+// function redirect_to ($path) { // откуда путь приходит ?
+//     header("Location: /page_login.php"); 
+//     exit;
+// }
 
 function get_users (){ // вывести всех пользователей
     $pdo = new PDO("mysql:host=localhost;dbname=projectm_users", "root", "");
@@ -72,17 +70,18 @@ function get_users (){ // вывести всех пользователей
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function get_authenticated_user (){ // возвращает пользователя из сессии
-    if(is_logget_in()){             // если залогенин
-        return $_SESSION['user'];
-    }
-}
+// function get_authenticated_user (){ // возвращает пользователя из сессии
+//     if(is_logget_in()){             // если залогенин
+//         return $_SESSION['user'];
+//     }
+// }
 
 function is_admin ($user){ //проверка на админа
     if(is_logget_in()){
         if($user['role'] === "admin"){
             return true;
         }
+        
         return false;
     }
 }
