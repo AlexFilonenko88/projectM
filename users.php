@@ -2,11 +2,6 @@
     session_start();
 
     require "functions.php";
-    // login($email, $password); //окуда беруться данные ?
-
-    if(is_not_logget_in()) {
-        // redirect_to('login');
-    };
 
     $users = get_users();
 

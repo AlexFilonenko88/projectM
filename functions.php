@@ -57,9 +57,9 @@ function is_logget_in (){
     return false;
 }
 
-function is_not_logget_in (){ // если не залогенин, функция редирект
-    return !is_logget_in();
-}
+// function is_not_logget_in (){ // если не залогенин, функция редирект
+//     return !is_logget_in();
+// }
 
 function redirect_to ($path) { // откуда путь приходит ?
     header("Location: /page_login.php"); 
@@ -79,8 +79,6 @@ function get_authenticated_user (){ // возвращает пользовате
 }
 
 function is_admin ($user){ //проверка на админа
-    // var_dump($user);
-    // die();
     if(is_logget_in()){
         if($user['role'] === "admin"){
             return true;
@@ -96,3 +94,5 @@ function is_equel ($user, $current_user) { // хозяин или нет
 
     return false;
 };
+
+// файл create_users.php
