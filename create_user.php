@@ -41,7 +41,7 @@
 
 
         </div>
-        <form action="">
+        <form action="handler_create_user.php" method="post">
             <div class="row">
                 <div class="col-xl-6">
                     <div id="panel-1" class="panel">
